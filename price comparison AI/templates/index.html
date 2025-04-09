@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Price Compare AI</title>
+</head>
+<body>
+    <h2>Product Price Comparison</h2>
+    <form method="POST">
+        <input type="text" name="query" placeholder="Search product..." required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if results %}
+    <h3>Results:</h3>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Image</th>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Source</th>
+            <th>Buy</th>
+        </tr>
+        {% for item in results %}
+        <tr>
+            <td><img src="{{ item.image }}" width="100"></td>
+            <td>{{ item.title }}</td>
+            <td>₹{{ item.price }}</td>
+            <td>{{ item.source }}</td>
+            <td><a href="{{ item.link }}" target="_blank">Buy Now</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
